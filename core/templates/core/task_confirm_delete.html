@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="header-bar" style="margin-top:40px;">
+      <a href="{{request.META.HTTP_REFERER|escape}}">&#8592; Go back</a>
+  </div>
+  <div class="card">
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token%}
+            <p>are you sure you want to delete {{task}}</p>
+            <input  class="btn btn-warning" type="submit" value="delete">
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

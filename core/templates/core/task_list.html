@@ -1,0 +1,35 @@
+{%extends 'core/base.html'%}
+{%block title%}list Task{%endblock title%}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row" style="margin-top:40px;">
+        <h3>Task</h3>
+        <ul class="list-group" >
+          {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              {%if task.completed %}
+              <div class="ms-2 me-auto">
+                <div class="fw-bold"><a href="{% url 'details' task.id %}">{{task.title}}</a></div>
+                <s>{{task.description}}</s>
+                <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle"></span>
+              </div>
+
+              {%else%}
+              <div class="ms-2 me-auto">
+                <div class="fw-bold"><a href="{% url 'details' task.id %}">{{task.title}}</a></div>
+                {{task.description}}
+              </div>
+                <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>
+</div>
+
+
+
+{% endblock content%}

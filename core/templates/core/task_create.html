@@ -1,0 +1,33 @@
+{% extends 'core/base.html'%}
+{%block title %}signup{%endblock title%}
+
+{%block content%}
+  <div class="container-fluid">
+    <div class="container">
+        <div class="card" style="top:40px;">
+            <div class="card-body">
+                <form class="form" action="" method="POST">
+                  {%csrf_token%}
+                  <div class="form-group">
+                    {{ form.username.label }}
+                    {{ form.username }}
+                  </div>
+                  <br />
+                  <div class="form-group">
+                  {{ form.password1.label }}
+                  {{ form.password1 }}
+                  </div>
+                  <br />
+                  <div class="form-group">
+                  {{ form.password2.label }}
+                  {{ form.password2 }}
+                  </div>
+                  <br />
+                  <button type="submit" name="button" class="btn btn-sm btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+{%endblock content%}

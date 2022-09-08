@@ -1,0 +1,17 @@
+{%extends 'core/base.html'%}
+  {% block content %}
+  <div class="container-fluid">
+    <div class="container">
+        <div class="card" style="top:40px;">
+            <div class="card-body">
+              <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+
+                <h5 class="card-title">{{task.title}}</h5>
+                <p class="card-text">{{task.description}}</p>
+                <a href="{% url 'update-task' task.id %}" class="btn btn-primary">Update</a>
+                <a href="{% url 'delete' task.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock content%}
