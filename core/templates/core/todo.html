@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/style.css'%}">
+    <title>todo</title>
+</head>
+
+<body>
+    <div class="image">
+        <div class="container">
+            <header>
+                <div class="todo-sun">
+                    <h1>todo</h1>
+                    <div class="sum-image"></div>
+                    <!-- <img src="images/icon-sun.svg" alt="" style="height:20px; width:20px;" srcset=""> -->
+                </div>
+                {% if request.user.is_authenticated %}
+                <div class="first-card">
+                    <div class="list-todo" style=" border: none">
+                        <div class="circle"></div>
+
+                        <span class=""><a class="nav-link" href="{% url 'create' %}">Create Task</a></span>
+                    </div>
+                </div>
+                {% endif %}
+            </header>
+            <div class="card">
+                {% for task in tasks %}
+                <div class="list-todo">
+                    {%if task.completed %}
+                    <div class="color-circle"></div>
+                    <span class="completed"><a href="{% url 'details' task.id %}">{{task.title}}</a></span>
+                    {%else%}
+                    <div class="circle"></div>
+                    <span class=""><a href="{% url 'details' task.id %}">{{task.title}}</a></span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <div class="list-footer">
+                    <span>3 items left</span>
+                    <div class="middle-div">
+                        <span style="margin-right:15px;color:hsl(220, 98%, 61%)">All</span>
+                        <span style="margin-right:15px;">Active</span>
+                        <span>Completed</span>
+                    </div>
+                    <span>clear Completed</span>
+                </div>
+            </div>
+            <div class="card footer-div">
+                <div class="list-footer" style="background-color:hsl(237, 14%, 26%)">
+                    <span></span>
+                    <div class="last-middle-div">
+                        <span style="margin-right:15px;color:hsl(220, 98%, 61%)">All</span>
+                        <span style="margin-right:15px;">Active</span>
+                        <span>Completed</span>
+                    </div>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
